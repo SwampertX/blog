@@ -1,13 +1,11 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-hugo
-git checkout master
-git checkout hugo -- public
-ls | rg -v public | xargs rm -r
-mv -f public/* .
-rm -rf public
+hugo --minify 
+git stash
+cd public
 git add .
-git commit -m "Automated deployment by deploy.sh"
+git commit -m "Automatically deployed by deploy.sh"
 git push origin master
-git checkout hugo
+cd ..
+git stash pop
