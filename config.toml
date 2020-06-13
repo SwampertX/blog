@@ -1,4 +1,4 @@
-baseURL = "https://blog.yeejian.dev/"
+baseURL = "https://swampertx.github.io/"
 # [en, zh-cn, fr, ...] determines default content language
 defaultContentLanguage = "en"
 # language code
@@ -112,6 +112,8 @@ enableEmoji = true
     Email = "tanyeejian@gmail.com"
     RSS = true
 
+  [params.page.comment]
+    enable = true
   [params.page.comment.utterances]
     enable = true
     repo = "SwampertX/swampertx.github.io"
@@ -184,7 +186,7 @@ enableEmoji = true
   [params.search]
     enable = true
     # type of search engine ("lunr", "algolia")
-    type = "algolia"
+    type = "lunr"
     # max index length of the chunked content
     contentLength = 4000
     # placeholder of the search bar
@@ -197,10 +199,11 @@ enableEmoji = true
     highlightTag = "em"
     # whether to use the absolute URL based on the baseURL in search index
     absoluteURL = false
-    [params.search.algolia]
-      index = "blog.en_prod"
-      appID = "DVF3HVX8I7"
-      searchKey = "963479170a64d58f0529a6634827fd56"
+
+    # [params.search.algolia]
+    #   index = "blog.en_prod"
+    #   appID = "DVF3HVX8I7"
+    #   searchKey = "963479170a64d58f0529a6634827fd56"
 
 # Author config
 [author]
@@ -269,3 +272,36 @@ enableEmoji = true
     url = "/categories/"
     title = ""
     weight = 5
+# Markup related configuration in Hugo
+# Hugo 解析文档的配置
+[markup]
+  # Syntax Highlighting (https://gohugo.io/content-management/syntax-highlighting)
+  # 语法高亮设置 (https://gohugo.io/content-management/syntax-highlighting)
+  [markup.highlight]
+    codeFences = true
+    guessSyntax = true
+    lineNos = true
+    lineNumbersInTable = true
+    # false is a necessary configuration (https://github.com/dillonzq/LoveIt/issues/158)
+    # false 是必要的设置 (https://github.com/dillonzq/LoveIt/issues/158)
+    noClasses = false
+  # Goldmark is from Hugo 0.60 the default library used for Markdown
+  # Goldmark 是 Hugo 0.60 以来的默认 Markdown 解析库
+  [markup.goldmark]
+    [markup.goldmark.extensions]
+      definitionList = true
+      footnote = true
+      linkify = true
+      strikethrough = true
+      table = true
+      taskList = true
+      typographer = true
+    [markup.goldmark.renderer]
+      # whether to use HTML tags directly in the document
+      # 是否在文档中直接使用 HTML 标签
+      unsafe = true
+  # Table Of Contents settings
+  # 目录设置
+  [markup.tableOfContents]
+    startLevel = 2
+    endLevel = 6
